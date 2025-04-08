@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  recipe_list:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../recipe_list:/workspace/recipe_list:cached
+      - ../.vscode:/workspace/.vscode:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    env_file:
+      - .flutter.env
