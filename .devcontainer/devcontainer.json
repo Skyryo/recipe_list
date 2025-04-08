@@ -1,47 +1,27 @@
 {
-  "name": "Flutter Development Environment",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": "."
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "Dart-Code.dart-code",
-        "Dart-Code.flutter",
-        "usernamehw.errorlens",
-        "aaron-bond.better-comments",
-        "nash.awesome-flutter-snippets",
-        "robert-brunhage.flutter-riverpod-snippets",
-        "rooveterinaryinc.roo-cline",
-        "ms-azuretools.vscode-docker"
-      ],
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "dart.flutterSdkPath": "/opt/flutter"
-      }
-    }
-  },
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "configureZshAsDefaultShell": true,
-      "installOhMyZsh": true,
-      "upgradePackages": true
-    }
-  },
-  "forwardPorts": [
-    3000,
-    8080,
-    5037
-  ],
-  "containerEnv": {
-    "ANDROID_SDK_ROOT": "/opt/android-sdk",
-    "FLUTTER_HOME": "/opt/flutter"
-  },
-  "remoteUser": "vscode",
-  "postCreateCommand": "flutter doctor",
-  "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
-  ]
+	"name": "Flutter Development Environment",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "."
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Dart-Code.dart-code", 
+				"Dart-Code.flutter",
+				"ms-azuretools.vscode-docker"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"dart.flutterSdkPath": "/opt/flutter"
+			}
+		}
+	},
+	"forwardPorts": [3000, 8080, 5037],
+	"containerEnv": {
+		"FLUTTER_HOME": "/opt/flutter"
+	},
+	"runArgs": ["--network=host"],
+	"remoteUser": "vscode",
+	"postCreateCommand": "flutter doctor"
 }
